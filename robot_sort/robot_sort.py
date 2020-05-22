@@ -81,11 +81,13 @@ class SortingRobot:
         Turn on the robot's light
         """
         self._light = "ON"
+
     def set_light_off(self):
         """
         Turn off the robot's light
         """
         self._light = "OFF"
+
     def light_is_on(self):
         """
         Returns True if the robot's light is on and False otherwise.
@@ -97,14 +99,54 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        
-        pass
+
+        # Going to implement a bubble sort as it seems like it should work. Not sure if it's the most efficient way, but can investigate that at a later date.
+
+        # Since set_light_on returns TRUE I'll start with it on
+        self.set_light_on()
+
+        # Now I want to start my bubble sort by looping through and eventually passing largest value to the end.
+        while self.light_is_on():
+
+            # Turn off the light until a swap is made
+            self.set_light_off()
+
+            # Move to the right until reaching the end
+            while self.can_move_right():
+
+                # Pick up the first item
+                self.swap_item()
+
+                # Move to the right
+                self.move_right()
+
+                # Compare item in hand with item at position and if item in hand is larger, swap item
+                if self.compare_item() == 1:
+                    self.swap_item()
+
+                    # Turn on light to signal a swap was made
+                    self.set_light_on()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+
+                # If item in hand isn't larger, continue to move left and compare
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+
+            # Continue pattern until all sorted
+            while self.can_move_left():
+                self.move_left()
+
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
-    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1,
+         45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
     robot = SortingRobot(l)
 

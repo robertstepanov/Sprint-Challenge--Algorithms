@@ -6,11 +6,11 @@ a) This is a linear function and it's dependent on the value of n so O(n)
 
 b) This is a iterative function that grows proportionally with the length of n so O(nlogn)
 
-c) This is a recursive function that takes the same amount of time so O(c)
+c) This is a recursive function that takes the same amount of time in each step so O(c)
 
 ## Exercise II
 
-I would use a binary search to do this.
+I would use a binary search to do this. O(logn)
 
 1. Determine how many floors and then find the middle.
 2. Drop an egg.

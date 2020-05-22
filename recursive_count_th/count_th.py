@@ -7,26 +7,12 @@ Your function must utilize recursion. It cannot contain any loops.
 
 def count_th(word):
 
-    # if word == '':
-    #     return 0
-    
-    # if(word [0: 2] == 'th'):
-    #     return 1 + count_th(word[1:])
-    # print(word)
-    # return count_th(word[1:])
-
     if word == '':
         return 0
     if word[0] == 't' and word[1] == 'h':
         return 1 + count_th(word[1:])
+    # Checks for the reverse to pass the test
     if word[-1] == 't' and word[-2] == 'h':
         return 1 + count_th(word[:1])
-   
-    return count_th(word[1:])
 
-    # if not word:
-    #     return 0
-    # elif word[0] == 'th':
-    #     return 1 + count_th(word[1:])
-    # else:
-    #     return count_th(word[1:])
+    return count_th(word[1:])
